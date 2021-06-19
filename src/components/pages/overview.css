@@ -1,0 +1,5 @@
+/* npm react-data-table Overrides */
+
+[role="rolegroup"]:nth-child(even) {
+    background: grey;
+}

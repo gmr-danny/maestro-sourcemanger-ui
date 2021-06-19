@@ -1,0 +1,31 @@
+.gmr-login-backgroundimage {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+
+}
+
+.gmr-login-modal {
+    text-align: center;
+    padding: 2%;
+    opacity: .75;
+    border-radius: 10px;
+    background: white;
+}
+
+.gmr-login-modal h5 {
+    cursor: pointer; 
+}
+
+#myVideo {
+    position: fixed;
+    right: 0;
+    bottom: 0;
+    min-width: 100%;
+    min-height: 100%;
+}
+
+.gmr-login-modal img {
+    display: block;
+}

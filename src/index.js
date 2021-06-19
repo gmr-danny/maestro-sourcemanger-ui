@@ -1,13 +1,17 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
-import App from './App';
+// import App from './App';
+import AuthProvider from './services/authprovider';
+
 import reportWebVitals from './reportWebVitals';
 
+console.log(process.env);
+
 ReactDOM.render(
-  <React.StrictMode>
-    <App />
-  </React.StrictMode>,
+  <React.Fragment>
+    <AuthProvider />
+  </React.Fragment>,
   document.getElementById('root')
 );
 

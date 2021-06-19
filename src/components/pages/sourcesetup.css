@@ -1,0 +1,27 @@
+
+
+.gmr-edit-comments {
+    display: flex;
+    flex-direction: column;
+    padding: 2%;
+}
+
+.gmr-edit-comments textarea {
+    min-height: 100px;
+    opacity: .75;
+}
+
+.gmr-edit-input {
+    margin: 2%;
+    display: flex;
+    justify-content: space-between;
+}
+
+.gmr-edit-input input {
+    opacity: .75;
+}
+
+
+
+
+

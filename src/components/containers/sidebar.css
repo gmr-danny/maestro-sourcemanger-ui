@@ -1,0 +1,17 @@
+.gmr-sidebar-container {
+    width: 300px;
+}
+
+.gmr-sidebar-indent {
+    padding-left: 1.75em;
+    cursor: pointer;
+}
+
+
+.gmr-sidebar-button {
+    position: absolute;
+    top: 50%;
+    color: grey;
+    right: 0%;
+    cursor: pointer;
+}

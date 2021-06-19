@@ -1,38 +1,140 @@
-.App {
-  text-align: center;
+/* Provide sufficient contrast against white background */
+a {
+  color: #0366d6;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+h5, h3 {
+    color: #50ccff;
+}
+input:focus,
+select:focus,
+textarea:focus,
+button:focus {
+    outline: none;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+.gmr-box {
+    display: flex;
+    flex-flow: column;
+    height: 100vh;
+}
+.gmr-flex-1 {
+    flex:1;
+    width:100%
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+code {
+    color: #E01A76;
 }
 
-.App-link {
-  color: #61dafb;
+.btn-primary {
+  color: #fff;
+  background-color: #1b6ec2;
+  border-color: #1861ac;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+
+.alert-pre {
+    word-wrap: break-word;
+    word-break: break-all;
+    white-space: pre-wrap;
+}
+
+.gmr-nav {
+    background: #50CCFF;
+    z-index: 99;
+    position: fixed;
+    width: 100%;
+    padding-left: 2%;
+    padding-right: 2%;
+}
+
+.gmr-white-text {
+    color: white !important;
+}
+
+.gmr-white-text:hover {
+    color: white;
+
+}
+
+.gmr-logo {
+    width: 50px;
+}
+
+.gmr-app-title {
+    position: relative;
+    top: 3px;
+    color: white;
+}
+
+
+
+/* Nav Bar */
+.gmr-nav-bar {
+    color: white;
+    margin-right: 0.5em;
+    font-size: 1.5em;
+    cursor: pointer;
+    position: relative;
+    top: .2em;
+}
+
+.gmr-searchbar {
+    width: 100%;
+    border-radius: 45px 45px;
+    padding: .5em;
+    border: none;
+}
+
+.gmr-searchbar-container {
+    margin: 0 auto;
+}
+
+.gmr-notification-icon {
+    margin: 0 .25em;
+    cursor: pointer;
+}
+/* Side Bar Mechanics */
+.gmr-sidebar {
+    box-shadow: 0.5px 0 0px 0px #3e3d3d42;
+    height: 100%;
+    width: 0;
+    position: fixed;
+    z-index: 1;
+    top: 0;
+    left: 0;
+    background-color: #f3f3f3;
+    overflow-x: hidden;
+    transition: 0.45s;
+    padding-top: 60px;
+    color: black;
+}
+
+.gmr-open-sidebar {
+    width: 250px;
+}
+
+.gmr-sidebar div {
+    display: none;
+}
+
+.gmr-open-sidebar div {
+    display: block;
+}
+
+.gmr-container {
+    margin-left: 5%;
+}
+
+[role="columnheader"] {
+    font-weight: 900;
+    font-size: medium;
+}
+
+
+@media only screen and (max-width: 1300px) {
+    .gmr-navbar-collapse {
+      display: none;
+    }
 }

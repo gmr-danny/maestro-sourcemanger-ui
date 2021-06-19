@@ -1,0 +1,26 @@
+{
+    "sourceFile": {
+        "source": "text",
+        "sourceType": "select",
+        "providesRevenueReport": "checkbox",
+        "providesCueSheets": "checkbox"
+    },
+    "fileFrequency": {
+        "frequency": "select",
+        "agreedDataFrequency": "text",
+        "durationOfFiles": "text",
+        "comments": "text",
+        "performance": "text",
+        "service": "text",
+        "toDo": "checkbox",
+        "isActive": "checkbox"
+    },
+    "contacts": {
+        "firstName":"text",
+        "middleName":"text",
+        "lastName":"text",
+        "email":"text"
+    }
+
+    
+}
