@@ -6,7 +6,7 @@ import { BrowserRouter } from 'react-router-dom';
 import App from '../App';
 
 const config = {
-    appId: '300a4563-8bfd-4afb-833b-bdb827cd12d2',
+    appId: process.env.REACT_APP_AZURE_APP_ID,
     scopes: [
         'api://sources/FullAccess', 
     ],
