@@ -3,37 +3,20 @@
       {
         "name": "Service Provider",
         "selector": "serviceProvider",
-        "sortable": true
+        "sortable": true,
+        "width": "15%"
       },
       {
         "name": "Frequency",
-        "selector": "frequency",
-        "sortable": true
+        "selector": "deliveryFrequencyId",
+        "sortable": true,
+        "width": "5%"
       },
       {
-        "name": "Source Type",
-        "selector": "sourceType",
-        "sortable": true
-      },
-      {
-        "name": "Performance",
-        "selector": "performance",
-        "sortable": true
-      },
-      {
-        "name": "Service",
-        "selector": "service",
-        "sortable": true
-      },
-      {
-        "name": "Agreed Data Frequency",
-        "selector": "agreedDataFrequency",
-        "sortable": true
-      },
-      {
-        "name": "File Durations",
-        "selector": "durationOfFiles",
-        "sortable": true
+        "name": "Comments",
+        "selector": "comments",
+        "sortable": true,
+        "width": "80%"
       }
     ]
       
