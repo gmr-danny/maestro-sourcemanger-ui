@@ -80,6 +80,21 @@ code {
     top: .2em;
 }
 
+.gmr-createbutton {
+    border-radius: 5px;
+    background: white;
+}
+
+.gmr-createbutton:hover {
+    opacity: .8;
+}
+
+.gmr-createbutton-text {
+    color: black !important; 
+    font-weight: 500;
+}
+
+
 .gmr-searchbar {
     width: 100%;
     border-radius: 45px 45px;

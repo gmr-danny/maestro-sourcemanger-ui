@@ -85,8 +85,8 @@ export default class NavBar extends Component {
                             <NavItem>
                                 <NavLink tag={Link} className="text-light" to="/Revenue">Revenue</NavLink>
                             </NavItem>
-                            <NavItem>
-                                <NavLink tag={Link} className="text-light" to="/CreateNew">Create</NavLink>
+                            <NavItem className="gmr-createbutton">
+                                <NavLink tag={Link} className="text-light gmr-createbutton-text" to="/CreateNew">Create</NavLink>
                             </NavItem>
                         </ul>
                     </Collapse>
