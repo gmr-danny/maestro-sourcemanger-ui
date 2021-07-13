@@ -56,7 +56,10 @@ class App extends Component {
                     <div className="row ml-5 mr-5 gmr-flex-1" >
                         <div className={`gmr-sidebar ${this.state.closed ? "" : "gmr-open-sidebar"}`}> <SideBar click={this.openSideBar} /> </div>
                         <div className="col-11 pt-5 mt-1 gmr-container">
-                            <AllRoutes />
+                            {
+                                this.props.roles[0] !== "Sources.Read" ? <h2 className="mt-5">You do not have access, please contact your manager.</h2> : <AllRoutes />
+                            }
+                            
                         </div>
                     </div>
                 </div>

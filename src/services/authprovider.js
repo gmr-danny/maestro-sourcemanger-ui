@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import { PublicClientApplication } from '@azure/msal-browser';
 import { BrowserRouter } from 'react-router-dom';
-
+import jwt_decode from "jwt-decode"; 
 
 import App from '../App';
 
@@ -20,7 +20,8 @@ export default class AuthProvider extends Component {
             this.state = {
                 isAuthenticated: false, 
                 user: {}, 
-                error: null
+                error: null, 
+                roles: []
             };
 
             this.publicClientApplication = new PublicClientApplication({
@@ -57,12 +58,14 @@ export default class AuthProvider extends Component {
                     <App
                     error={this.state.error}
                     isAuthenticated={this.state.isAuthenticated}
+                    roles={this.state.roles}
                     user={this.state.user}
                     login={() => this.login()}
                     logout={() => this.logout()}
                     getAccessToken={(scopes) => this.getAccessToken(scopes)}
                     setError={(message, debug) => this.setErrorMessage(message, debug)}
-                    {...this.props} />
+                    {...this.props} 
+                    />
                 </BrowserRouter>
                 );
         }
@@ -115,7 +118,10 @@ export default class AuthProvider extends Component {
                         scopes: scopes, //scopes,
                         account: accounts[0]
                     });
-                console.log("Returning token silently", silentResult)
+                
+                var decodedToken = jwt_decode(silentResult.accessToken); 
+                this.setState({roles: decodedToken.roles});
+
                 sessionStorage.setItem("accessToken", silentResult.accessToken);
                 //sessionStorage.setItem("idToken", silentResult.idToken);
 
