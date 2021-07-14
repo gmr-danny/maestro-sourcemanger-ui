@@ -3,7 +3,7 @@ import { Formik, Form, Field } from 'formik';
 import * as Yup from 'yup';
 import './sourcemanagerform.css';
 
-var fields = require('../data/fields.json');
+// var fields = require('../data/fields.json');
 var select = require('../data/select.json');
 
 
@@ -112,7 +112,7 @@ class SourcemanagerForm extends Component {
                 mode: 'cors'
             });
             //const parsedResponse = await response.json(); 
-
+            console.log(response);
         } catch (err) {
             //console.log('err', err)
             return err; 
