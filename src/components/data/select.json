@@ -1,0 +1,55 @@
+{
+    "inputType": {
+        "FTP": "0",
+        "SFTP": "1",
+        "GMR FTP": "2",
+        "MRI FTP - 3rd party FTP": "3", 
+        "Email": "4", 
+        "Hightail- like box": "5", 
+        "Box.com": "6", 
+        "Google Docs": "7", 
+        "Index BI": "8", 
+        "BMAT Cloud": "9"
+    },
+    "deliveryFrequency": {
+        "Quarterly": "0",
+        "Monthly": "1",
+        "Semi-Annual": "2"
+    },
+    "expectedDelivery": {
+        "days after end of quarter":"0",
+        "days after end of month":"1",
+        "days after end of semester":"2",
+        "months after end of quarter":"3"
+    },
+    "sourceLag": {
+        "No Lag":"0",
+        "1 Quarter Lag":"1",
+        "2 Quarter Lag":"2",
+        "3 Quarter Lag":"3",
+        "4 Quarter Lag":"4"
+    },
+    "sourceType": {
+        "Music":"0",
+        "AV":"1",
+        "Foreign":"2"
+    },
+    "dataSince": {
+        "1Q":"0",
+        "2Q":"1",
+        "3Q":"2",
+        "4Q":"3",
+        "N/A":"4"
+    },
+    "dataSinceYear": {
+        "2015":"-2",
+        "2016":"-1",
+        "2017":"0",
+        "2018":"1",
+        "2019":"2",
+        "2020":"3",
+        "N/A":"4"
+    }
+
+    
+}
