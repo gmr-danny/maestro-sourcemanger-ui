@@ -7,16 +7,23 @@
         "width": "15%"
       },
       {
+        "name": " Id",
+        "selector": "sourceId",
+        "sortable": true,
+        "width": "5%"
+      },
+      {
         "name": "Frequency",
         "selector": "deliveryFrequencyId",
         "sortable": true,
         "width": "5%"
       },
+
       {
         "name": "Comments",
         "selector": "comments",
         "sortable": true,
-        "width": "80%"
+        "width": "70%"
       }
     ]
       

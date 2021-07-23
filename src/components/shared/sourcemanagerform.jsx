@@ -157,8 +157,10 @@ class SourcemanagerForm extends Component {
                             </section>
                             <div className="row ml-5 mr-5 gmr-flex-1 p-2">
                                 <section className="gmr-edit-section col-xs-12 col-sm-6"> 
+                                    
                                     <h1 className="gmr-section-title-edit">Source File</h1>
                                     {/* Fields subject to change. Below is temporary */}
+                                    <div className="fieldsection"> 
                                     <div className="gmr-edit-header">
                                         <div className="gmr-fieldvalues">Input Type</div>
                                         <div>
@@ -170,7 +172,7 @@ class SourcemanagerForm extends Component {
                                     <div className="gmr-edit-header">
                                         <div className="gmr-fieldvalues">URL</div>
                                         <div>
-                                             <input name="url" type="text" placeholder={this.props.data.serviceProvider} /> 
+                                             <input name="url" type="text" placeholder="https://www.example.com" /> 
                                         </div>
                                     </div>
                                     <div className="gmr-edit-header">
@@ -192,10 +194,11 @@ class SourcemanagerForm extends Component {
                                         
                                         </div>
                                     </div>
-                                    
+                                    </div>
                                 </section>
                                 <section className="gmr-edit-section col-xs-12 col-sm-6"> 
                                     <h1 className="gmr-section-title-edit">File Frequency</h1>
+                                    <div className="fieldsection"> 
                                     <div className="gmr-edit-header">
                                         <div className="gmr-fieldvalues">Delivery Frequency</div>
                                         <div>
@@ -215,7 +218,7 @@ class SourcemanagerForm extends Component {
                                         <div>
                                             <input name="expectedDelivery" type="number" placeholder="25" /> 
                                         
-                                             <Field name="inputType" as="select" className="ml-1">
+                                             <Field name="expectedDelivery" as="select" className="ml-1">
                                                  {this.generateOptions(select.expectedDelivery)}
                                             </Field>
                                         </div>
@@ -224,7 +227,7 @@ class SourcemanagerForm extends Component {
                                         <div className="gmr-fieldvalues">Source Lag</div>
                                     
                                         <div>
-                                             <Field name="inputType" as="select" className="">
+                                             <Field name="sourceLag" as="select" className="">
                                                  {this.generateOptions(select.sourceLag)}
                                             </Field>
                                         </div>
@@ -233,7 +236,7 @@ class SourcemanagerForm extends Component {
                                         <div className="gmr-fieldvalues">Source Type</div>
                                     
                                         <div>
-                                             <Field name="inputType" as="select" className="">
+                                             <Field name="sourceType" as="select" className="">
                                                  {this.generateOptions(select.sourceType)}
                                             </Field>
                                         </div>
@@ -242,11 +245,11 @@ class SourcemanagerForm extends Component {
                                         <div className="gmr-fieldvalues">Data Since</div>
                                     
                                         <div>
-                                             <Field name="inputType" as="select" className="">
+                                             <Field name="dataSince" as="select" className="">
                                                  {this.generateOptions(select.dataSince)}
                                             </Field>
                                         
-                                             <Field name="inputType" as="select" className="">
+                                             <Field name="dataSinceYear" as="select" className="">
                                                  {this.generateOptions(select.dataSinceYear)}
                                             </Field>
                                         </div>
@@ -265,11 +268,15 @@ class SourcemanagerForm extends Component {
                                         
                                         </div>
                                     </div>
-                                    
+                                    </div>
                                 </section>
                             </div>
+                            <div className="row ml-5 mr-5 gmr-flex-1 p-2">
+
                             <section className="gmr-edit-section col-6">
-                                <h1 className="gmr-section-title-edit">Contact</h1>
+                                <h1 className="gmr-section-title-edit">Contacts</h1>
+                                <div className="fieldsection"> 
+
                                 <div className="gmr-edit-header">
                                     <div className="gmr-fieldvalues">First Name</div>
                                     <div>
@@ -294,7 +301,39 @@ class SourcemanagerForm extends Component {
                                             <input name="url" type="text" placeholder="(123) 456-8239" /> 
                                     </div>
                                 </div>
+                                </div>
                             </section>
+                            <section className="gmr-edit-section col-6">
+                                <h1 className="gmr-section-title-edit test">Contact</h1>
+                                <div className="fieldsection"> 
+
+                                <div className="gmr-edit-header">
+                                    <div className="gmr-fieldvalues">First Name</div>
+                                    <div>
+                                            <input name="url" type="text" placeholder="Jane" /> 
+                                    </div>
+                                </div>
+                                <div className="gmr-edit-header">
+                                    <div className="gmr-fieldvalues">Last Name</div>
+                                    <div>
+                                            <input name="url" type="text" placeholder="Doe" /> 
+                                    </div>
+                                </div>
+                                <div className="gmr-edit-header">
+                                    <div className="gmr-fieldvalues">Email</div>
+                                    <div>
+                                            <input name="url" type="email" placeholder="test@globalmusicrights.com" /> 
+                                    </div>
+                                </div>
+                                <div className="gmr-edit-header">
+                                    <div className="gmr-fieldvalues">Phone</div>
+                                    <div>
+                                            <input name="url" type="text" placeholder="(123) 456-8239" /> 
+                                    </div>
+                                </div>
+                                </div>
+                            </section>
+                            </div>
                         </Form>
                     );
                     }}
