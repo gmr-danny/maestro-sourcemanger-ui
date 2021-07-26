@@ -77,9 +77,6 @@ export default class NavBar extends Component {
                                 <NavLink tag={Link} className="text-light" to="/SourceManager">Source Manager</NavLink>
                             </NavItem>
                             <NavItem>
-                                <NavLink tag={Link} className="text-light" to="/SourceSetup/:id">Source Setup</NavLink>
-                            </NavItem>
-                            <NavItem>
                                 <NavLink tag={Link} className="text-light" to="/Overdue">Overdue</NavLink>
                             </NavItem>
                             <NavItem>

@@ -1,9 +1,13 @@
+
+
+
+
 .gmr-login-backgroundimage {
     display: flex;
     align-items: center;
     justify-content: center;
     height: 100vh;
-
+    background: #50ccff;
 }
 
 .gmr-login-modal {

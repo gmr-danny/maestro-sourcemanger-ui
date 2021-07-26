@@ -58,9 +58,7 @@ select {
 }
 
 .fieldsection {
-    padding: 4%;
-    border: 2px solid lightblue;
-    border-radius: 25px;;
+    
 }
 
 .test {
@@ -75,4 +73,9 @@ select[name="inputType"] {
 
 input, select {
     border: 1px solid #50CCFF;
+    border-radius: 5px;
+}
+
+.gmr-bluefont {
+    color: #50CCFF;
 }
