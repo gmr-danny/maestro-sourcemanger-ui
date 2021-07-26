@@ -20,9 +20,14 @@
 }
 
 .gmr-save-changes {
+    padding: .5%;
     position: absolute;
     right: 2%;
     top: 4%;
+    background: white;
+    border-radius: 25px;
+    color: #50CCFF;
+    border: 1px solid #50CCFF;
 }
 
 .gmr-edit-header {
@@ -45,4 +50,32 @@ input[type="number"] {
 select {
     height: 2em;
     margin-left: .5em;
+}
+
+
+.form-check-input {
+    border: 1.5px solid #50ccff;
+}
+
+.fieldsection {
+    
+}
+
+.test {
+    visibility: hidden;
+}
+
+select[name="inputType"] {
+    width: 92%;
+    position: relative;
+    left: 4%;
+}
+
+input, select {
+    border: 1px solid #50CCFF;
+    border-radius: 5px;
+}
+
+.gmr-bluefont {
+    color: #50CCFF;
 }

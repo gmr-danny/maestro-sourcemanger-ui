@@ -8,7 +8,7 @@ var jsdom = require("mocha-jsdom");
 //   url: "http://localhost:3000/"
 // });
 
-import App from "./App";
+import Overview from './overview';
 
 // let rootContainer;
 
@@ -21,13 +21,15 @@ import App from "./App";
 //   document.body.removeChild(rootContainer);
 //   rootContainer = null;
 // });
+const objFormat = {ServiceProvider: "", Frequency: "", Source: "", SourceType: "", ProvidesRevenueReport: 1}; 
 
-describe("App Component Testing", () => {
-  it("Renders Component", () => {
+describe("Overview Component Testing", () => {
+  it("Retrieves data from API", () => {
     act(() => {
-      ReactDOM.render(<App />, rootContainer);
+      this.getData();
     });
-    const h1 = rootContainer.querySelector("h1");
-    expect(h1.textContent).to.equal("Hello World");
+    // expect(responseObj).to.equal(objFormat);
+
+    
   });
 });

@@ -1,0 +1,22 @@
+{
+    "inputType": "SFTP",
+    "url": "http://www.example.com",
+    "password": "password", 
+    "deliveryFrequency": "Monthly",
+    "numExpectedFiles": "4",
+    "expectedDeliveryDays": "6", 
+    "expectedDelivery": "days after end of quarter", 
+    "sourceLag": "No Lag", 
+    "sourceType": "Music", 
+    "dataSinceQuarter": "1Q", 
+    "dataSinceYear": "2015", 
+    "contact_1_first_name": "James", 
+    "contact_1_last_name": "Doe", 
+    "contact_1_email": "james@globalmusicrights.com", 
+    "contact_1_phone": "415-233-1235",
+    "contact_2_first_name": "Amanda", 
+    "contact_2_last_name": "Doe", 
+    "contact_2_email": "amanda@globalmusicrights.com", 
+    "contact_2_phone": "415-233-1235"
+
+}

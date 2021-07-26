@@ -5,6 +5,7 @@ import './sourcemanagerform.css';
 
 // var fields = require('../data/fields.json');
 var select = require('../data/select.json');
+var mockData = require('../data/mockdata.json');
 
 
 const ValidationSchema = Yup.object().shape({
@@ -29,8 +30,8 @@ class SourcemanagerForm extends Component {
 
     editForm = () => {
         this.setState({
-            edit: true, 
-            data: this.props.data
+            edit: true
+            // data: this.props.data
         });
     }
 
@@ -152,104 +153,147 @@ class SourcemanagerForm extends Component {
                             <section className="gmr-edit-section">
                                 {/* {this.fieldGenerator(errors, touched, "serviceProvider", "text")} */}
                                 <h1> {this.props.data.serviceProvider} </h1>
-                                <button type="submit" className="gmr-save-changes">Save Changes</button> 
+                                <button type="submit" className="gmr-save-changes" onClick={this.editForm}>{!this.state.edit ? "Edit" : "Save Changes"}</button> 
 
                             </section>
                             <div className="row ml-5 mr-5 gmr-flex-1 p-2">
                                 <section className="gmr-edit-section col-xs-12 col-sm-6"> 
+                                    
                                     <h1 className="gmr-section-title-edit">Source File</h1>
                                     {/* Fields subject to change. Below is temporary */}
+                                    <div className="fieldsection"> 
                                     <div className="gmr-edit-header">
-                                        <div className="gmr-fieldvalues">Input Type</div>
+                                        <div className="">Input Type</div>
                                         <div>
-                                             <Field name="inputType" as="select" className="">
-                                                 {this.generateOptions(select.inputType)}
-                                            </Field>
+                                            {
+                                                this.state.edit ? 
+                                                <Field name="inputType" as="select" className="" value={mockData.inputType}>
+                                                    {this.generateOptions(select.inputType)}
+                                                </Field>
+                                                :   
+                                                <div className="gmr-bluefont"> {mockData.inputType} </div>
+                                            }
+                                            
                                         </div>
                                     </div>
                                     <div className="gmr-edit-header">
-                                        <div className="gmr-fieldvalues">URL</div>
+                                        <div className="">URL</div>
                                         <div>
-                                             <input name="url" type="text" placeholder={this.props.data.serviceProvider} /> 
+                                            {
+                                                this.state.edit ? 
+                                                <input name="url" type="text" placeholder="https://www.example.com" /> :
+                                                <div className="gmr-bluefont"> {mockData.url} </div>
+                                            }
                                         </div>
                                     </div>
                                     <div className="gmr-edit-header">
                                         <div className="gmr-fieldvalues">Password</div>
                                         <div>
-                                            <input name="url" type="password" value={this.props.data.serviceProvider} /> 
+                                            {
+                                                this.state.edit ? 
+                                                <input name="url" type="password" value={this.props.data.serviceProvider} /> 
+                                                : <div className="gmr-bluefont"> ********* </div>
+                                            }
                                         </div>
                                     </div>
                                     <div className="gmr-edit-header">
                                         <div className="gmr-fieldvalues">File Path</div>
-                                        <div>
-                                            <input name="url" type="text" placeholder={ "/" + this.props.data.serviceProvider} /> 
-                                        </div>
+                                        {
+                                            this.state.edit ? 
+                                            <div>
+                                                <input name="url" type="text" placeholder={ "/" + this.props.data.serviceProvider} /> 
+                                            </div> :
+                                            <div className="gmr-bluefont">{"/"+ (this.props.data.serviceProvider || "").replace(/\s/g, '')} </div>
+                                        }
+                                        
                                     </div>
                                     <div className="gmr-edit-header">
                                         <div className="gmr-fieldvalues">Has Revenue File</div>
                                         <div class="form-check form-switch">
-                                        <input class="form-check-input" type="checkbox" id="flexSwitchCheckDefault" />
+                                            <input class="form-check-input" type="checkbox" id="flexSwitchCheckDefault" />
                                         
                                         </div>
                                     </div>
-                                    
+                                    </div>
                                 </section>
                                 <section className="gmr-edit-section col-xs-12 col-sm-6"> 
                                     <h1 className="gmr-section-title-edit">File Frequency</h1>
+                                    <div className="fieldsection"> 
                                     <div className="gmr-edit-header">
                                         <div className="gmr-fieldvalues">Delivery Frequency</div>
                                         <div>
-                                             <Field name="inputType" as="select" className="">
-                                                 {this.generateOptions(select.deliveryFrequency)}
-                                            </Field>
+                                            {
+                                                this.state.edit ? 
+                                                <Field name="deliveryFrequency" as="select" className="">
+                                                    {this.generateOptions(select.deliveryFrequency)}
+                                                </Field> :
+                                                <div className="gmr-bluefont">{mockData.deliveryFrequency} </div>
+                                            }
                                         </div>
                                     </div>
                                     <div className="gmr-edit-header">
                                         <div className="gmr-fieldvalues">Number of Files Expected</div>
                                         <div>
-                                            <input name="url" type="number" placeholder="2" /> 
+                                            {
+                                                this.state.edit ? 
+
+                                            
+                                                <input name="numExpectedFiles" type="number" placeholder={mockData.numExpectedFiles} /> :
+                                                <div className="gmr-bluefont">{mockData.numExpectedFiles} </div>
+                                            }
                                         </div>
                                     </div>
                                     <div className="gmr-edit-header">
                                         <div className="gmr-fieldvalues">Expected Delivery</div>
                                         <div>
-                                            <input name="expectedDelivery" type="number" placeholder="25" /> 
-                                        
-                                             <Field name="inputType" as="select" className="ml-1">
-                                                 {this.generateOptions(select.expectedDelivery)}
-                                            </Field>
+                                            {this.state.edit ? 
+                                            <span>
+                                                <input name="expectedDelivery" type="number" placeholder={mockData.expectedDeliveryDays} /> 
+                                                
+                                                <Field name="expectedDelivery" as="select" className="ml-1">
+                                                    {this.generateOptions(select.expectedDelivery)}
+                                                </Field>
+                                            </span> :
+                                            <div className="gmr-bluefont">{mockData.expectedDeliveryDays} {mockData.expectedDelivery} </div>
+                                            }
                                         </div>
                                     </div>
                                     <div className="gmr-edit-header">
                                         <div className="gmr-fieldvalues">Source Lag</div>
-                                    
-                                        <div>
-                                             <Field name="inputType" as="select" className="">
-                                                 {this.generateOptions(select.sourceLag)}
-                                            </Field>
-                                        </div>
+                                        {this.state.edit ? 
+                                            <div>
+                                                <Field name="sourceLag" as="select" className="">
+                                                    {this.generateOptions(select.sourceLag)}
+                                                </Field>
+                                            </div>
+                                            : <div className="gmr-bluefont">{mockData.sourceLag} </div>
+                                        }
                                     </div>
                                     <div className="gmr-edit-header">
                                         <div className="gmr-fieldvalues">Source Type</div>
-                                    
-                                        <div>
-                                             <Field name="inputType" as="select" className="">
-                                                 {this.generateOptions(select.sourceType)}
-                                            </Field>
-                                        </div>
+                                        {this.state.edit?
+                                            <div>
+                                                <Field name="sourceType" as="select" className="">
+                                                    {this.generateOptions(select.sourceType)}
+                                                </Field>
+                                            </div> : 
+                                            <div className="gmr-bluefont">{mockData.sourceType} </div>
+                                        }
                                     </div>
                                     <div className="gmr-edit-header">
                                         <div className="gmr-fieldvalues">Data Since</div>
-                                    
-                                        <div>
-                                             <Field name="inputType" as="select" className="">
-                                                 {this.generateOptions(select.dataSince)}
-                                            </Field>
-                                        
-                                             <Field name="inputType" as="select" className="">
-                                                 {this.generateOptions(select.dataSinceYear)}
-                                            </Field>
-                                        </div>
+                                        {this.state.edit ?
+                                            <div>
+                                                <Field name="dataSince" as="select" className="">
+                                                    {this.generateOptions(select.dataSince)}
+                                                </Field>
+                                            
+                                                <Field name="dataSinceYear" as="select" className="">
+                                                    {this.generateOptions(select.dataSinceYear)}
+                                                </Field>
+                                            </div> :
+                                            <div className="gmr-bluefont">{mockData.dataSinceQuarter} {mockData.dataSinceYear} </div>
+                                        }
                                     </div>
                                     <div className="gmr-edit-header">
                                         <div className="gmr-fieldvalues">New Source</div>
@@ -265,36 +309,98 @@ class SourcemanagerForm extends Component {
                                         
                                         </div>
                                     </div>
-                                    
+                                    </div>
                                 </section>
                             </div>
+                            <div className="row ml-5 mr-5 gmr-flex-1 p-2">
+
                             <section className="gmr-edit-section col-6">
-                                <h1 className="gmr-section-title-edit">Contact</h1>
+                                <h1 className="gmr-section-title-edit">Contacts</h1>
+                                <div className="fieldsection"> 
+
                                 <div className="gmr-edit-header">
                                     <div className="gmr-fieldvalues">First Name</div>
                                     <div>
-                                            <input name="url" type="text" placeholder="John" /> 
+                                        {this.state.edit? 
+                                            <input name="contact_2_first_name" type="text" placeholder={mockData.contact_1_first_name} />:
+                                            <div className="gmr-bluefont">{mockData.contact_1_first_name} </div>
+                                        }
                                     </div>
                                 </div>
                                 <div className="gmr-edit-header">
                                     <div className="gmr-fieldvalues">Last Name</div>
                                     <div>
-                                            <input name="url" type="text" placeholder="Doe" /> 
+                                        {this.state.edit ?
+                                            <input name="contact_1_last_name" type="text" placeholder={mockData.contact_1_last_name} /> :
+                                            <div className="gmr-bluefont">{mockData.contact_1_last_name} </div>
+                                        }
                                     </div>
                                 </div>
                                 <div className="gmr-edit-header">
                                     <div className="gmr-fieldvalues">Email</div>
                                     <div>
-                                            <input name="url" type="email" placeholder="test@globalmusicrights.com" /> 
+                                        {this.state.edit? 
+                                            <input name="contact_1_email" type="email" placeholder={mockData.contact_1_email} /> :
+                                            <div className="gmr-bluefont">{mockData.contact_1_email} </div>
+                                        }
                                     </div>
                                 </div>
                                 <div className="gmr-edit-header">
                                     <div className="gmr-fieldvalues">Phone</div>
                                     <div>
-                                            <input name="url" type="text" placeholder="(123) 456-8239" /> 
+                                        {
+                                            this.state.edit?
+                                            <input name="contact_1_phone" type="text" placeholder={mockData.contact_1_phone} /> :
+                                            <div className="gmr-bluefont">{mockData.contact_1_phone} </div>
+                                        }
                                     </div>
                                 </div>
+                                </div>
                             </section>
+                            <section className="gmr-edit-section col-6">
+                                <h1 className="gmr-section-title-edit test">Contact</h1>
+                                <div className="fieldsection"> 
+
+                                <div className="gmr-edit-header">
+                                    <div className="gmr-fieldvalues">First Name</div>
+                                    <div>
+                                        {this.state.edit? 
+                                            <input name="contact_2_first_name" type="text" placeholder={mockData.contact_2_first_name} />:
+                                            <div className="gmr-bluefont">{mockData.contact_2_first_name} </div>
+                                        }
+                                    </div>
+                                </div>
+                                <div className="gmr-edit-header">
+                                    <div className="gmr-fieldvalues">Last Name</div>
+                                    <div>
+                                        {this.state.edit ?
+                                            <input name="contact_2_last_name" type="text" placeholder={mockData.contact_2_last_name} /> :
+                                            <div className="gmr-bluefont">{mockData.contact_2_last_name} </div>
+                                        }
+                                    </div>
+                                </div>
+                                <div className="gmr-edit-header">
+                                    <div className="gmr-fieldvalues">Email</div>
+                                    <div>
+                                        {this.state.edit? 
+                                            <input name="contact_2_email" type="email" placeholder={mockData.contact_2_email} /> :
+                                            <div className="gmr-bluefont">{mockData.contact_2_email} </div>
+                                        }
+                                    </div>
+                                </div>
+                                <div className="gmr-edit-header">
+                                    <div className="gmr-fieldvalues">Phone</div>
+                                    <div>
+                                        {
+                                            this.state.edit?
+                                            <input name="contact_2_phone" type="text" placeholder={mockData.contact_2_phone} /> :
+                                            <div className="gmr-bluefont">{mockData.contact_2_phone} </div>
+                                        }
+                                    </div>
+                                </div>
+                                </div>
+                            </section>
+                            </div>
                         </Form>
                     );
                     }}

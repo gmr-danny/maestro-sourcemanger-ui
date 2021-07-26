@@ -1,22 +1,23 @@
 {
     "Response": [
       {
-        "name": "Service Provider",
+        "name": "SERVICE PROVIDER",
         "selector": "serviceProvider",
         "sortable": true,
         "width": "15%"
       },
       {
-        "name": "Frequency",
+        "name": "FREQUENCY",
         "selector": "deliveryFrequencyId",
         "sortable": true,
         "width": "5%"
       },
+
       {
-        "name": "Comments",
+        "name": "COMMENTS",
         "selector": "comments",
         "sortable": true,
-        "width": "80%"
+        "width": "70%"
       }
     ]
       
