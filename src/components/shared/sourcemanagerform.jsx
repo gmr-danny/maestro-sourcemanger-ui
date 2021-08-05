@@ -27,7 +27,7 @@ class SourcemanagerForm extends Component {
     }
 
     componentDidMount() {
-        if (window.location.href === "http://localhost:3000/CreateNew") {
+        if (window.location.href === `${process.env.REACT_APP_REDIRECT_URL}/CreateNew`) {
             this.setState({
                 edit: true
             });
