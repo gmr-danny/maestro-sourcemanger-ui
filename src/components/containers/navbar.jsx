@@ -55,6 +55,11 @@ export default class NavBar extends Component {
         });
     }
 
+    handleCreateButton = (e) => {
+        e.preventDefault();
+        window.location.href = '/CreateNew';
+    }
+
     
 
     render() {
@@ -83,7 +88,7 @@ export default class NavBar extends Component {
                                 <NavLink tag={Link} className="text-light" to="/Revenue">Revenue</NavLink>
                             </NavItem>
                             <NavItem className="gmr-createbutton">
-                                <NavLink tag={Link} className="text-light gmr-createbutton-text" to="/CreateNew">Create</NavLink>
+                                <NavLink tag={Link} className="text-light gmr-createbutton-text" to="/CreateNew" onClick={this.handleCreateButton}>Create</NavLink>
                             </NavItem>
                         </ul>
                     </Collapse>

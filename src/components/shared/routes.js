@@ -8,9 +8,10 @@ import SourceSetup from '../pages/sourcesetup';
 
 const AllRoutes = () => {
 	return (
-		<Switch>
+		<Switch >
             <Route exact path = '/' component = { Overview } />
             <Route exact path = '/SourceSetup/:id' component = { SourceSetup } />
+            <Route exact path = '/CreateNew' component = { SourceSetup } />
         </Switch>
 		)
 };
