@@ -26,7 +26,13 @@ class SourcemanagerForm extends Component {
         };
     }
 
-
+    componentDidMount() {
+        if (window.location.href === `${process.env.REACT_APP_REDIRECT_URL}/CreateNew`) {
+            this.setState({
+                edit: true
+            });
+        }
+    }
 
     editForm = () => {
         this.setState({
@@ -127,7 +133,7 @@ class SourcemanagerForm extends Component {
     }
 
     render() { 
-        console.log("Current State", this.state, this.props)
+        console.log("Current State", this.state)
         return (
             <div className="mt-5 gmr-edit-container">
                 {/* {this.state.edit ? null : <i onClick={this.editForm} className="bi bi-pencil gmr-edit-pencil"/> } */}
@@ -152,7 +158,7 @@ class SourcemanagerForm extends Component {
                         <Form onSubmit={this.handleSubmit}>
                             <section className="gmr-edit-section">
                                 {/* {this.fieldGenerator(errors, touched, "serviceProvider", "text")} */}
-                                <h1> {this.props.data.serviceProvider} </h1>
+                                <h1> {this.props.data.serviceProvider ? <span>{this.props.data.serviceProvider}</span>  : <input name="sourceName" placeholder="Source Name" /> } </h1>
                                 <button type="submit" className="gmr-save-changes" onClick={this.editForm}>{!this.state.edit ? "Edit" : "Save Changes"}</button> 
 
                             </section>
@@ -181,7 +187,7 @@ class SourcemanagerForm extends Component {
                                         <div>
                                             {
                                                 this.state.edit ? 
-                                                <input name="url" type="text" placeholder="https://www.example.com" /> :
+                                                <input name="url" type="text" placeholder={this.props.data.url} /> :
                                                 <div className="gmr-bluefont"> {mockData.url} </div>
                                             }
                                         </div>
@@ -201,7 +207,7 @@ class SourcemanagerForm extends Component {
                                         {
                                             this.state.edit ? 
                                             <div>
-                                                <input name="url" type="text" placeholder={ "/" + this.props.data.serviceProvider} /> 
+                                                <input name="url" type="text" placeholder={ this.props.data.serviceProvider ? "/" + this.props.data.serviceProvider: ""} /> 
                                             </div> :
                                             <div className="gmr-bluefont">{"/"+ (this.props.data.serviceProvider || "").replace(/\s/g, '')} </div>
                                         }
@@ -238,7 +244,7 @@ class SourcemanagerForm extends Component {
                                                 this.state.edit ? 
 
                                             
-                                                <input name="numExpectedFiles" type="number" placeholder={mockData.numExpectedFiles} /> :
+                                                <input name="numExpectedFiles" type="number" placeholder={this.props.data.serviceProvider ? mockData.numExpectedFiles : ""} /> :
                                                 <div className="gmr-bluefont">{mockData.numExpectedFiles} </div>
                                             }
                                         </div>
@@ -248,7 +254,7 @@ class SourcemanagerForm extends Component {
                                         <div>
                                             {this.state.edit ? 
                                             <span>
-                                                <input name="expectedDelivery" type="number" placeholder={mockData.expectedDeliveryDays} /> 
+                                                <input name="expectedDelivery" type="number" placeholder={this.props.data.serviceProvider ? mockData.expectedDeliveryDays : ""} /> 
                                                 
                                                 <Field name="expectedDelivery" as="select" className="ml-1">
                                                     {this.generateOptions(select.expectedDelivery)}
@@ -322,7 +328,7 @@ class SourcemanagerForm extends Component {
                                     <div className="gmr-fieldvalues">First Name</div>
                                     <div>
                                         {this.state.edit? 
-                                            <input name="contact_2_first_name" type="text" placeholder={mockData.contact_1_first_name} />:
+                                            <input name="contact_2_first_name" type="text" placeholder={this.props.data.serviceProvider ? mockData.contact_1_first_name : ""} />:
                                             <div className="gmr-bluefont">{mockData.contact_1_first_name} </div>
                                         }
                                     </div>
@@ -331,7 +337,7 @@ class SourcemanagerForm extends Component {
                                     <div className="gmr-fieldvalues">Last Name</div>
                                     <div>
                                         {this.state.edit ?
-                                            <input name="contact_1_last_name" type="text" placeholder={mockData.contact_1_last_name} /> :
+                                            <input name="contact_1_last_name" type="text" placeholder={this.props.data.serviceProvider ? mockData.contact_1_last_name : ""} /> :
                                             <div className="gmr-bluefont">{mockData.contact_1_last_name} </div>
                                         }
                                     </div>
@@ -340,7 +346,7 @@ class SourcemanagerForm extends Component {
                                     <div className="gmr-fieldvalues">Email</div>
                                     <div>
                                         {this.state.edit? 
-                                            <input name="contact_1_email" type="email" placeholder={mockData.contact_1_email} /> :
+                                            <input name="contact_1_email" type="email" placeholder={this.props.data.serviceProvider ? mockData.contact_1_email : ""} /> :
                                             <div className="gmr-bluefont">{mockData.contact_1_email} </div>
                                         }
                                     </div>
@@ -350,7 +356,7 @@ class SourcemanagerForm extends Component {
                                     <div>
                                         {
                                             this.state.edit?
-                                            <input name="contact_1_phone" type="text" placeholder={mockData.contact_1_phone} /> :
+                                            <input name="contact_1_phone" type="text" placeholder={this.props.data.serviceProvider ? mockData.contact_1_phone : ""} /> :
                                             <div className="gmr-bluefont">{mockData.contact_1_phone} </div>
                                         }
                                     </div>
@@ -365,7 +371,7 @@ class SourcemanagerForm extends Component {
                                     <div className="gmr-fieldvalues">First Name</div>
                                     <div>
                                         {this.state.edit? 
-                                            <input name="contact_2_first_name" type="text" placeholder={mockData.contact_2_first_name} />:
+                                            <input name="contact_2_first_name" type="text" placeholder={this.props.data.serviceProvider ? mockData.contact_2_first_name : ""} />:
                                             <div className="gmr-bluefont">{mockData.contact_2_first_name} </div>
                                         }
                                     </div>
@@ -374,7 +380,7 @@ class SourcemanagerForm extends Component {
                                     <div className="gmr-fieldvalues">Last Name</div>
                                     <div>
                                         {this.state.edit ?
-                                            <input name="contact_2_last_name" type="text" placeholder={mockData.contact_2_last_name} /> :
+                                            <input name="contact_2_last_name" type="text" placeholder={this.props.data.serviceProvider ? mockData.contact_2_last_name : ""} /> :
                                             <div className="gmr-bluefont">{mockData.contact_2_last_name} </div>
                                         }
                                     </div>
@@ -383,7 +389,7 @@ class SourcemanagerForm extends Component {
                                     <div className="gmr-fieldvalues">Email</div>
                                     <div>
                                         {this.state.edit? 
-                                            <input name="contact_2_email" type="email" placeholder={mockData.contact_2_email} /> :
+                                            <input name="contact_2_email" type="email" placeholder={this.props.data.serviceProvider ? mockData.contact_2_email : ""} /> :
                                             <div className="gmr-bluefont">{mockData.contact_2_email} </div>
                                         }
                                     </div>
@@ -393,7 +399,7 @@ class SourcemanagerForm extends Component {
                                     <div>
                                         {
                                             this.state.edit?
-                                            <input name="contact_2_phone" type="text" placeholder={mockData.contact_2_phone} /> :
+                                            <input name="contact_2_phone" type="text" placeholder={this.props.data.serviceProvider ? mockData.contact_2_phone : ""} /> :
                                             <div className="gmr-bluefont">{mockData.contact_2_phone} </div>
                                         }
                                     </div>
