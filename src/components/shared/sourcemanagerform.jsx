@@ -132,6 +132,51 @@ class SourcemanagerForm extends Component {
             return (<option value={key} key={index}>{key}</option> )})
     }
 
+    addContact = () => {
+        return (
+            <div className="fieldsection"> 
+
+            <div className="gmr-edit-header">
+                <div className="gmr-fieldvalues">First Name</div>
+                <div>
+                    {this.state.edit? 
+                        <input name="contact_2_first_name" type="text" placeholder={this.props.data.serviceProvider ? mockData.contact_1_first_name : ""} />:
+                        <div className="gmr-bluefont">{mockData.contact_1_first_name} </div>
+                    }
+                </div>
+            </div>
+            <div className="gmr-edit-header">
+                <div className="gmr-fieldvalues">Last Name</div>
+                <div>
+                    {this.state.edit ?
+                        <input name="contact_1_last_name" type="text" placeholder={this.props.data.serviceProvider ? mockData.contact_1_last_name : ""} /> :
+                        <div className="gmr-bluefont">{mockData.contact_1_last_name} </div>
+                    }
+                </div>
+            </div>
+            <div className="gmr-edit-header">
+                <div className="gmr-fieldvalues">Email</div>
+                <div>
+                    {this.state.edit? 
+                        <input name="contact_1_email" type="email" placeholder={this.props.data.serviceProvider ? mockData.contact_1_email : ""} /> :
+                        <div className="gmr-bluefont">{mockData.contact_1_email} </div>
+                    }
+                </div>
+            </div>
+            <div className="gmr-edit-header">
+                <div className="gmr-fieldvalues">Phone</div>
+                <div>
+                    {
+                        this.state.edit?
+                        <input name="contact_1_phone" type="text" placeholder={this.props.data.serviceProvider ? mockData.contact_1_phone : ""} /> :
+                        <div className="gmr-bluefont">{mockData.contact_1_phone} </div>
+                    }
+                </div>
+            </div>
+        </div>
+        );
+    }
+
     render() { 
         console.log("Current State", this.state)
         return (
@@ -244,7 +289,7 @@ class SourcemanagerForm extends Component {
                                                 this.state.edit ? 
 
                                             
-                                                <input name="numExpectedFiles" type="number" placeholder={this.props.data.serviceProvider ? mockData.numExpectedFiles : ""} /> :
+                                                <input name="numExpectedFiles" type="number" min="0" placeholder={this.props.data.serviceProvider ? mockData.numExpectedFiles : ""} /> :
                                                 <div className="gmr-bluefont">{mockData.numExpectedFiles} </div>
                                             }
                                         </div>
@@ -254,7 +299,7 @@ class SourcemanagerForm extends Component {
                                         <div>
                                             {this.state.edit ? 
                                             <span>
-                                                <input name="expectedDelivery" type="number" placeholder={this.props.data.serviceProvider ? mockData.expectedDeliveryDays : ""} /> 
+                                                <input name="expectedDelivery" type="number" min="0" placeholder={this.props.data.serviceProvider ? mockData.expectedDeliveryDays : ""} /> 
                                                 
                                                 <Field name="expectedDelivery" as="select" className="ml-1">
                                                     {this.generateOptions(select.expectedDelivery)}
@@ -322,90 +367,9 @@ class SourcemanagerForm extends Component {
 
                             <section className="gmr-edit-section col-6">
                                 <h1 className="gmr-section-title-edit">Contacts</h1>
-                                <div className="fieldsection"> 
-
-                                <div className="gmr-edit-header">
-                                    <div className="gmr-fieldvalues">First Name</div>
-                                    <div>
-                                        {this.state.edit? 
-                                            <input name="contact_2_first_name" type="text" placeholder={this.props.data.serviceProvider ? mockData.contact_1_first_name : ""} />:
-                                            <div className="gmr-bluefont">{mockData.contact_1_first_name} </div>
-                                        }
-                                    </div>
-                                </div>
-                                <div className="gmr-edit-header">
-                                    <div className="gmr-fieldvalues">Last Name</div>
-                                    <div>
-                                        {this.state.edit ?
-                                            <input name="contact_1_last_name" type="text" placeholder={this.props.data.serviceProvider ? mockData.contact_1_last_name : ""} /> :
-                                            <div className="gmr-bluefont">{mockData.contact_1_last_name} </div>
-                                        }
-                                    </div>
-                                </div>
-                                <div className="gmr-edit-header">
-                                    <div className="gmr-fieldvalues">Email</div>
-                                    <div>
-                                        {this.state.edit? 
-                                            <input name="contact_1_email" type="email" placeholder={this.props.data.serviceProvider ? mockData.contact_1_email : ""} /> :
-                                            <div className="gmr-bluefont">{mockData.contact_1_email} </div>
-                                        }
-                                    </div>
-                                </div>
-                                <div className="gmr-edit-header">
-                                    <div className="gmr-fieldvalues">Phone</div>
-                                    <div>
-                                        {
-                                            this.state.edit?
-                                            <input name="contact_1_phone" type="text" placeholder={this.props.data.serviceProvider ? mockData.contact_1_phone : ""} /> :
-                                            <div className="gmr-bluefont">{mockData.contact_1_phone} </div>
-                                        }
-                                    </div>
-                                </div>
-                                </div>
+                                <p onClick={this.addContact}> Add Contact </p>
                             </section>
-                            <section className="gmr-edit-section col-6">
-                                <h1 className="gmr-section-title-edit test">Contact</h1>
-                                <div className="fieldsection"> 
 
-                                <div className="gmr-edit-header">
-                                    <div className="gmr-fieldvalues">First Name</div>
-                                    <div>
-                                        {this.state.edit? 
-                                            <input name="contact_2_first_name" type="text" placeholder={this.props.data.serviceProvider ? mockData.contact_2_first_name : ""} />:
-                                            <div className="gmr-bluefont">{mockData.contact_2_first_name} </div>
-                                        }
-                                    </div>
-                                </div>
-                                <div className="gmr-edit-header">
-                                    <div className="gmr-fieldvalues">Last Name</div>
-                                    <div>
-                                        {this.state.edit ?
-                                            <input name="contact_2_last_name" type="text" placeholder={this.props.data.serviceProvider ? mockData.contact_2_last_name : ""} /> :
-                                            <div className="gmr-bluefont">{mockData.contact_2_last_name} </div>
-                                        }
-                                    </div>
-                                </div>
-                                <div className="gmr-edit-header">
-                                    <div className="gmr-fieldvalues">Email</div>
-                                    <div>
-                                        {this.state.edit? 
-                                            <input name="contact_2_email" type="email" placeholder={this.props.data.serviceProvider ? mockData.contact_2_email : ""} /> :
-                                            <div className="gmr-bluefont">{mockData.contact_2_email} </div>
-                                        }
-                                    </div>
-                                </div>
-                                <div className="gmr-edit-header">
-                                    <div className="gmr-fieldvalues">Phone</div>
-                                    <div>
-                                        {
-                                            this.state.edit?
-                                            <input name="contact_2_phone" type="text" placeholder={this.props.data.serviceProvider ? mockData.contact_2_phone : ""} /> :
-                                            <div className="gmr-bluefont">{mockData.contact_2_phone} </div>
-                                        }
-                                    </div>
-                                </div>
-                                </div>
-                            </section>
                             </div>
                         </Form>
                     );
