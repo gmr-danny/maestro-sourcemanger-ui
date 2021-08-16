@@ -300,7 +300,7 @@ class SourcemanagerForm extends Component {
                                         <div>
                                             {
                                                 this.state.edit ? 
-                                                <input name="url" type="text" placeholder={this.props.data.url || this.state.url} /> :
+                                                <input name="url" type="text" placeholder={this.props.data.url || this.state.urlc} /> :
                                                 <div className="gmr-bluefont"> {mockData.url} </div>
                                             }
                                         </div>
