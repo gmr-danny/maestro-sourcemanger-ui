@@ -77,3 +77,10 @@ input, select {
 .gmr-bluefont {
     color: #50CCFF;
 }
+
+.add-contact {
+    background: white;
+    border-radius: 17px;
+    color: #50CCFF;
+    cursor: pointer;
+}

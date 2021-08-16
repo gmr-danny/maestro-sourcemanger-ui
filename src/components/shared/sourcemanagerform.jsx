@@ -22,7 +22,13 @@ class SourcemanagerForm extends Component {
         super(props);
         this.state = {
             edit: false, 
-            data: {}
+            data: {}, 
+            contacts: [""],
+
+            // autofill 
+            url: "", 
+            filepath: ""
+            
         };
     }
 
@@ -133,6 +139,63 @@ class SourcemanagerForm extends Component {
     }
 
     addContact = () => {
+        this.setState({
+            contacts: [...this.state.contacts, ""]
+        })
+    }
+
+    handleInputAutofill = (e) => {
+        console.log("autofill", e.target.value);
+        let urlInput, filePathInput; 
+        switch(e.target.value) {
+            case "FTP": 
+                urlInput = "/FTP"; 
+                filePathInput = "/FTP";
+                break; 
+            case "SFTP": 
+                urlInput = "/SFTP"; 
+                filePathInput = "/SFTP";
+                break; 
+            case "GMR FTP": 
+                urlInput = "/GMR/FTP"; 
+                filePathInput = "/GMR/FTP";
+                break; 
+            case "MRI FTP": 
+                urlInput = "/MRI/FTP"; 
+                filePathInput = "/MRI/FTP";
+                break; 
+            case "Email": 
+                urlInput = "blank@email.com"; 
+                filePathInput = "/EmailAddress";
+                break; 
+            case "Hightail- like box": 
+                urlInput = "/Hightail"; 
+                filePathInput = "/Box/Hightail";
+                break; 
+            case "Box.com": 
+                urlInput = "box.com"; 
+                filePathInput = "/box";
+                break; 
+            case "Google Docs": 
+                urlInput = "drive.google.com"; 
+                filePathInput = "/GoogleDocs";
+                break; 
+            case "Index BI": 
+                urlInput = "/Index/BI"; 
+                filePathInput = "/Index/BI";
+                break;
+            case "BMAT Cloud": 
+                urlInput = "/BMAT/Cloud"; 
+                filePathInput = "/BMAT";
+                break;
+        }
+        this.setState({
+            url: urlInput, 
+            filepath: filePathInput
+        });
+    }
+
+    renderContact = () => {
         return (
             <div className="fieldsection"> 
 
@@ -178,7 +241,12 @@ class SourcemanagerForm extends Component {
     }
 
     render() { 
-        console.log("Current State", this.state)
+        // console.log("Current State", this.state); 
+        let contactFields = this.state.contacts.map((value, index) => {
+            return (
+                <section className="gmr-edit-section col-6" key={index}>{ this.renderContact() }</section>
+            );
+        });
         return (
             <div className="mt-5 gmr-edit-container">
                 {/* {this.state.edit ? null : <i onClick={this.editForm} className="bi bi-pencil gmr-edit-pencil"/> } */}
@@ -214,11 +282,11 @@ class SourcemanagerForm extends Component {
                                     {/* Fields subject to change. Below is temporary */}
                                     <div className="fieldsection"> 
                                     <div className="gmr-edit-header">
-                                        <div className="">Input Type</div>
+                                        <div >Input Type</div>
                                         <div>
                                             {
                                                 this.state.edit ? 
-                                                <Field name="inputType" as="select" className="" value={mockData.inputType}>
+                                                <Field name="inputType" as="select" onChange={this.handleInputAutofill} >
                                                     {this.generateOptions(select.inputType)}
                                                 </Field>
                                                 :   
@@ -228,11 +296,11 @@ class SourcemanagerForm extends Component {
                                         </div>
                                     </div>
                                     <div className="gmr-edit-header">
-                                        <div className="">URL</div>
+                                        <div>URL</div>
                                         <div>
                                             {
                                                 this.state.edit ? 
-                                                <input name="url" type="text" placeholder={this.props.data.url} /> :
+                                                <input name="url" type="text" placeholder={this.props.data.url || this.state.url} /> :
                                                 <div className="gmr-bluefont"> {mockData.url} </div>
                                             }
                                         </div>
@@ -252,7 +320,7 @@ class SourcemanagerForm extends Component {
                                         {
                                             this.state.edit ? 
                                             <div>
-                                                <input name="url" type="text" placeholder={ this.props.data.serviceProvider ? "/" + this.props.data.serviceProvider: ""} /> 
+                                                <input name="url" type="text" placeholder={ this.props.data.serviceProvider ? "/" + this.props.data.serviceProvider: this.state.filepath} /> 
                                             </div> :
                                             <div className="gmr-bluefont">{"/"+ (this.props.data.serviceProvider || "").replace(/\s/g, '')} </div>
                                         }
@@ -364,11 +432,12 @@ class SourcemanagerForm extends Component {
                                 </section>
                             </div>
                             <div className="row ml-5 mr-5 gmr-flex-1 p-2">
-
-                            <section className="gmr-edit-section col-6">
-                                <h1 className="gmr-section-title-edit">Contacts</h1>
-                                <p onClick={this.addContact}> Add Contact </p>
-                            </section>
+                                    <h1 className="gmr-section-title-edit col-12">Contacts <span className="add-contact" onClick={this.addContact}> + </span></h1>
+                                    
+                                    {
+                                        contactFields
+                                    }
+                                
 
                             </div>
                         </Form>
